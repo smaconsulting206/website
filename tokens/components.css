@@ -1,0 +1,222 @@
+/* ============================================================
+   SMA CONSULTING — COMPONENT CLASSES
+   Real CSS for the React primitives (hover/active/focus live
+   here). Components stay thin wrappers over these classes.
+   ============================================================ */
+
+/* ---------------- Eyebrow / kicker ---------------- */
+.sma-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55em;
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0;
+}
+.sma-eyebrow::before {
+  content: "";
+  width: 1.6em;
+  height: 2px;
+  background: currentColor;
+  display: inline-block;
+}
+.sma-eyebrow--plain::before { display: none; }
+.sma-eyebrow--on-ink { color: var(--teal-300); }
+
+/* ---------------- Button ---------------- */
+.sma-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6em;
+  font-family: var(--font-body);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-body-sm);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  padding: 0.85em 1.5em;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid transparent;
+  background: var(--navy-800);
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background var(--dur) var(--ease-std),
+              color var(--dur) var(--ease-std),
+              border-color var(--dur) var(--ease-std),
+              transform var(--dur-fast) var(--ease-std);
+}
+.sma-btn:hover { background: var(--navy-700); }
+.sma-btn:active { transform: translateY(1px); }
+.sma-btn:focus-visible { box-shadow: var(--focus-ring); }
+
+.sma-btn--accent { background: var(--teal-600); }
+.sma-btn--accent:hover { background: var(--teal-700); }
+
+.sma-btn--secondary {
+  background: transparent; color: var(--navy-800); border-color: var(--border-strong);
+}
+.sma-btn--secondary:hover { background: var(--navy-800); color: #fff; border-color: var(--navy-800); }
+
+.sma-btn--ghost { background: transparent; color: var(--navy-800); }
+.sma-btn--ghost:hover { background: rgba(20, 41, 75, 0.07); }
+
+.sma-btn--link {
+  background: transparent; color: var(--accent);
+  padding: 0.3em 0; border-radius: 0; gap: 0.4em;
+}
+.sma-btn--link:hover { background: transparent; color: var(--accent-hover); }
+
+.sma-btn--on-ink.sma-btn--secondary { color: #fff; border-color: var(--border-on-ink); }
+.sma-btn--on-ink.sma-btn--secondary:hover { background: #fff; color: var(--navy-900); border-color: #fff; }
+
+.sma-btn--sm { padding: 0.6em 1.15em; font-size: var(--fs-caption); }
+.sma-btn--lg { padding: 1.05em 1.9em; font-size: var(--fs-body); }
+.sma-btn--block { display: flex; width: 100%; }
+.sma-btn[disabled], .sma-btn[aria-disabled="true"] {
+  opacity: 0.45; pointer-events: none;
+}
+.sma-btn svg { width: 1.15em; height: 1.15em; flex: none; }
+
+/* ---------------- Badge / Tag ---------------- */
+.sma-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.42em 0.8em;
+  border-radius: var(--radius-pill);
+  background: var(--surface-tint);
+  color: var(--teal-700);
+  border: 1px solid transparent;
+}
+.sma-badge--navy { background: var(--navy-100); color: var(--navy-700); }
+.sma-badge--outline { background: transparent; border-color: var(--border-strong); color: var(--text-muted); }
+.sma-badge--solid { background: var(--teal-600); color: #fff; }
+.sma-badge--dot::before {
+  content: ""; width: 6px; height: 6px; border-radius: 50%;
+  background: currentColor; display: inline-block;
+}
+
+/* ---------------- Card ---------------- */
+.sma-card {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-card);
+}
+.sma-card--flat { box-shadow: none; }
+.sma-card--tint { background: var(--surface-tint); border-color: transparent; }
+.sma-card--ink {
+  background: var(--surface-ink); border-color: var(--border-on-ink); color: var(--text-on-ink);
+}
+.sma-card--ink h1, .sma-card--ink h2, .sma-card--ink h3, .sma-card--ink h4 { color: #fff; }
+.sma-card--interactive { transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out); }
+.sma-card--interactive:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--border-strong); }
+
+/* ---------------- Stat ---------------- */
+.sma-stat { display: flex; flex-direction: column; gap: 0.35rem; }
+.sma-stat__figure {
+  font-family: var(--font-display);
+  font-weight: var(--fw-extra);
+  font-size: var(--fs-stat);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--navy-800);
+}
+.sma-stat__figure .u { color: var(--accent); }
+.sma-stat__label {
+  font-family: var(--font-body);
+  font-size: var(--fs-body-sm);
+  color: var(--text-muted);
+  line-height: 1.4;
+  max-width: 24ch;
+}
+.sma-stat--on-ink .sma-stat__figure { color: #fff; }
+.sma-stat--on-ink .sma-stat__figure .u { color: var(--teal-300); }
+.sma-stat--on-ink .sma-stat__label { color: var(--text-on-ink-muted); }
+
+/* ---------------- Pillar / service card ---------------- */
+.sma-pillar {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+.sma-pillar:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.sma-pillar__no {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.1em;
+  color: var(--steel-500);
+}
+.sma-pillar__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+.sma-pillar__entity {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.sma-pillar__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.7rem; }
+.sma-pillar__list li {
+  position: relative; padding-left: 1.4rem;
+  font-size: var(--fs-body-sm); color: var(--text-body); line-height: 1.45;
+}
+.sma-pillar__list li::before {
+  content: ""; position: absolute; left: 0; top: 0.55em;
+  width: 7px; height: 7px; border-radius: 2px; background: var(--accent);
+  transform: rotate(45deg);
+}
+
+/* ---------------- Principal card ---------------- */
+.sma-principal {
+  background: var(--surface-raised);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+.sma-principal:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.sma-principal__photo {
+  aspect-ratio: 4 / 3;
+  background: var(--paper-2);
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid var(--border-card);
+}
+.sma-principal__body { padding: var(--space-5); display: flex; flex-direction: column; gap: 0.5rem; }
+.sma-principal__name { font-family: var(--font-display); font-size: 1.2rem; font-weight: var(--fw-bold); color: var(--text-primary); }
+.sma-principal__entity {
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent);
+}
+.sma-principal__focus { font-size: var(--fs-body-sm); color: var(--text-body); line-height: 1.5; }
+.sma-principal__cred { font-size: var(--fs-caption); color: var(--text-muted); margin-top: 0.25rem; }
+
+/* ---------------- Section eyebrow header helper ---------------- */
+.sma-section-head { display: flex; flex-direction: column; gap: var(--space-3); max-width: 56ch; }
+.sma-section-head h2 { font-size: var(--fs-h2); }

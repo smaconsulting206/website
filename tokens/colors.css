@@ -1,0 +1,89 @@
+/* ============================================================
+   SMA CONSULTING — COLOUR TOKENS
+   Cool navy ink + a single teal signal, grounded on warm
+   ivory paper. Editorial + human, never sterile-corporate.
+   ============================================================ */
+
+:root {
+  /* --- Brand: navy (from logo outline) --- */
+  --navy-900: #102542;   /* deepest — dark hero / footer */
+  --navy-800: #14294b;   /* primary brand ink (logo navy) */
+  --navy-700: #1e3a63;
+  --navy-600: #2a4d7d;
+  --navy-200: #c3d0e2;
+  --navy-100: #e4eaf2;
+
+  /* --- Brand: steel blue (the slotting puzzle piece) --- */
+  --steel-700: #1d4f74;
+  --steel-600: #235c86;
+  --steel-500: #2b6e96;  /* logo filled piece */
+  --steel-400: #4f8cb0;
+  --steel-100: #e3eef4;
+
+  /* --- Accent: teal signal (growth / change) --- */
+  --teal-800: #0f4d3e;
+  --teal-700: #14604d;
+  --teal-600: #176b57;   /* primary accent */
+  --teal-500: #1d8770;   /* hover / bright */
+  --teal-300: #8fc4b4;
+  --teal-100: #e2efea;   /* tint surface */
+
+  /* --- Warm neutrals (paper & ink) --- */
+  --white:    #ffffff;
+  --paper:    #f6f3ec;   /* page background — matches logo bg */
+  --paper-2:  #efe9dd;   /* alternating section */
+  --sand-100: #eae3d4;
+  --sand-200: #ded5c2;
+
+  --ink-900: #15233b;    /* headings */
+  --ink-700: #36465c;    /* body copy */
+  --ink-600: #51606f;
+  --ink-500: #6e7b89;    /* muted / captions */
+  --ink-400: #98a0ab;    /* faint / disabled */
+
+  --line:        #e5dfd2;  /* hairline on paper */
+  --line-strong: #d6cdbc;
+  --line-card:   #ece7db;  /* hairline on white card */
+
+  /* --- Status (kept minimal, brand-tuned) --- */
+  --success: #1d8770;
+  --warning: #b47a1e;
+  --danger:  #a8442e;
+
+  /* ============================================================
+     SEMANTIC ALIASES — author against these
+     ============================================================ */
+
+  /* surfaces */
+  --surface-page:     var(--paper);
+  --surface-section:  var(--paper-2);
+  --surface-raised:   var(--white);
+  --surface-tint:     var(--teal-100);
+  --surface-ink:      var(--navy-800);
+  --surface-ink-deep: var(--navy-900);
+
+  /* text */
+  --text-primary:     var(--ink-900);
+  --text-body:        var(--ink-700);
+  --text-muted:       var(--ink-500);
+  --text-faint:       var(--ink-400);
+  --text-on-ink:      #f3f5f9;
+  --text-on-ink-muted:#9fb0c7;
+  --text-link:        var(--teal-600);
+
+  /* brand */
+  --brand:       var(--navy-800);
+  --brand-steel: var(--steel-500);
+  --accent:      var(--teal-600);
+  --accent-hover:var(--teal-700);
+  --accent-tint: var(--teal-100);
+
+  /* lines */
+  --border:        var(--line);
+  --border-strong: var(--line-strong);
+  --border-card:   var(--line-card);
+  --border-on-ink: rgba(255, 255, 255, 0.14);
+
+  /* focus */
+  --focus-ring: 0 0 0 3px rgba(43, 110, 150, 0.35);
+}
