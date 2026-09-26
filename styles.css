@@ -1,6 +1,6 @@
 /* ============================================================
-   SMA CONSULTING — DESIGN SYSTEM ENTRY POINT
-   Consumers link this single file. Imports only.
+   SMA CONSULTING — stylesheet entry point
+   Links fonts + design-system tokens. Imports only.
    ============================================================ */
 
 @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&family=Sora:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap");
