@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sma-consulting.co.uk/sitemap.xml
