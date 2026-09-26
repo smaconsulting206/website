@@ -4,7 +4,7 @@
    This file carries page-level structure only.
    ============================================================ */
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 body { background: var(--surface-page); color: var(--text-body); font-family: var(--font-body); margin: 0; }
 
 a { color: var(--text-link); }
@@ -46,6 +46,34 @@ a:hover { color: var(--accent-hover); }
 }
 .nav a:hover { color: var(--navy-800); border-bottom-color: var(--accent); }
 .nav a[aria-current] { color: var(--navy-800); font-weight: var(--fw-semibold); border-bottom-color: var(--accent); }
+
+/* Mobile header: brand and call to action on one row, nav as a single
+   swipeable row beneath, so the sticky header stays compact. */
+@media (max-width: 960px) {
+  html { scroll-padding-top: 112px; }
+  .site-header__inner { gap: 0.6rem var(--space-3); padding-top: 0.6rem; padding-bottom: 0.5rem; }
+  .header-right { display: contents; }
+  .brand { gap: 0.5rem; }
+  .brand img { height: 28px; }
+  .brand span { font-size: 0.95rem; }
+  .header-right > .sma-btn { padding: 0.5em 0.85em; font-size: 0.75rem; }
+  .nav {
+    order: 3; flex: 1 0 100%; flex-wrap: nowrap; gap: var(--space-5);
+    overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+    margin-inline: calc(-1 * var(--gutter, 20px)); padding-inline: var(--gutter, 20px);
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { flex: none; padding-block: 0.35rem 0.25rem; }
+}
+@media (max-width: 374px) {
+  .brand span { display: none; }
+}
+@media (max-width: 480px) {
+  .sma-btn--lg { white-space: normal; max-width: 100%; }
+  .footer-links a { overflow-wrap: anywhere; }
+}
 
 /* ---------------- Sections ---------------- */
 .section { padding-block: var(--section-y); }
@@ -138,6 +166,7 @@ h2.section-title {
 .episode__title { font-family: var(--font-display); font-size: 1.12rem; font-weight: var(--fw-bold); color: #fff; line-height: 1.25; }
 @media (max-width: 560px) {
   .episode { grid-template-columns: 1fr; }
+  .hero__watermark { display: none; }
 }
 
 /* ---------------- Framework register ---------------- */
@@ -193,7 +222,7 @@ h2.section-title {
   border-bottom: 1px solid var(--border-on-ink);
 }
 .footer-brand { display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; }
-.footer-brand img { height: 44px; width: auto; }
+.footer-brand img { width: 190px; height: auto; }
 .footer-brand p { font-size: var(--fs-body-sm); line-height: 1.6; color: var(--text-on-ink-muted); margin: 0; max-width: 36ch; }
 .footer-head {
   font-family: var(--font-mono); font-size: 0.68rem; font-weight: var(--fw-bold);
