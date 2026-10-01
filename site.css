@@ -4,7 +4,7 @@
    This file carries page-level structure only.
    ============================================================ */
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 body { background: var(--surface-page); color: var(--text-body); font-family: var(--font-body); margin: 0; }
 
 a { color: var(--text-link); }
@@ -47,6 +47,36 @@ a:hover { color: var(--accent-hover); }
 .nav a:hover { color: var(--navy-800); border-bottom-color: var(--accent); }
 .nav a[aria-current] { color: var(--navy-800); font-weight: var(--fw-semibold); border-bottom-color: var(--accent); }
 
+/* Mobile and tablet header (below 1100px, where six nav items stop fitting):
+   brand and call to action on one row, nav as a single swipeable row beneath,
+   so the sticky header stays compact. */
+@media (max-width: 1099px) {
+  html { scroll-padding-top: 112px; }
+  .site-header__inner { gap: 0.6rem var(--space-3); padding-top: 0.6rem; padding-bottom: 0.5rem; }
+  .header-right { display: contents; }
+  .brand { gap: 0.5rem; }
+  .brand img { height: 28px; }
+  .brand span { font-size: 0.95rem; }
+  .header-right > .sma-btn { padding: 0.5em 0.85em; font-size: 0.75rem; }
+  .nav {
+    order: 3; flex: 1 0 100%; flex-wrap: nowrap; gap: var(--space-5);
+    overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    -webkit-mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to right, #000 calc(100% - 28px), transparent);
+    margin-inline: calc(-1 * var(--gutter, 20px)); padding-inline: var(--gutter, 20px);
+  }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { flex: none; padding-block: 0.35rem 0.25rem; }
+}
+@media (max-width: 374px) {
+  .brand span { display: none; }
+}
+@media (max-width: 480px) {
+  .sma-btn--lg { white-space: normal; max-width: 100%; }
+  .footer-links a { overflow-wrap: anywhere; }
+  .contact-panel__row strong { overflow-wrap: anywhere; }
+}
+
 /* ---------------- Sections ---------------- */
 .section { padding-block: var(--section-y); }
 .section--tint { background: var(--surface-section); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
@@ -74,18 +104,22 @@ a:hover { color: var(--accent-hover); }
 .hero__lead { font-size: var(--fs-lead); line-height: 1.5; max-width: 58ch; margin: 0 0 var(--space-7); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: var(--space-4); margin-bottom: clamp(2.5rem, 2rem + 3vw, 4rem); }
 .hero__stats {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr));
   gap: var(--space-6); border-top: 1px solid var(--border-on-ink); padding-top: var(--space-6);
 }
 
 /* ---------------- Generic grids ---------------- */
 .grid { display: grid; gap: var(--space-5); }
-.grid--2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-7) var(--space-9); }
-.grid--cards { grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); }
-.grid--cards-sm { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
-.grid--people { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-.grid--four { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+.grid--2 { grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)); gap: var(--space-7) var(--space-9); }
+.grid--cards { grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); }
+.grid--cards-sm { grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr)); }
+.grid--people { grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr)); }
+.grid--four { grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr)); }
 .align-center { align-items: center; }
+.teaser-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+@media (max-width: 420px) { .teaser-grid { grid-template-columns: 1fr; } }
+/* Seven pillars plus the CTA card: let the CTA fill the last row when the grid has three columns. */
+@media (min-width: 996px) { .capability-cta { grid-column: span 2; } }
 .align-start { align-items: start; }
 
 h2.section-title {
@@ -138,6 +172,7 @@ h2.section-title {
 .episode__title { font-family: var(--font-display); font-size: 1.12rem; font-weight: var(--fw-bold); color: #fff; line-height: 1.25; }
 @media (max-width: 560px) {
   .episode { grid-template-columns: 1fr; }
+  .hero__watermark { display: none; }
 }
 
 /* ---------------- Framework register ---------------- */
@@ -188,12 +223,12 @@ h2.section-title {
 /* ---------------- Footer ---------------- */
 .site-footer { background: var(--navy-900); color: var(--text-on-ink); padding-top: var(--space-9); padding-bottom: var(--space-6); }
 .site-footer__cols {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(230px, 100%), 1fr));
   gap: var(--space-7) var(--space-9); padding-bottom: var(--space-7);
   border-bottom: 1px solid var(--border-on-ink);
 }
 .footer-brand { display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; }
-.footer-brand img { height: 44px; width: auto; }
+.footer-brand img { width: 190px; height: auto; }
 .footer-brand p { font-size: var(--fs-body-sm); line-height: 1.6; color: var(--text-on-ink-muted); margin: 0; max-width: 36ch; }
 .footer-head {
   font-family: var(--font-mono); font-size: 0.68rem; font-weight: var(--fw-bold);
@@ -220,7 +255,7 @@ h2.section-title {
   text-transform: uppercase; color: var(--text-muted);
 }
 .credibility .sep { color: var(--accent); }
-.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-6) var(--space-7); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: var(--space-6) var(--space-7); }
 .step { display: flex; flex-direction: column; gap: 0.85rem; padding-top: var(--space-4); border-top: 2px solid var(--navy-800); }
 .step--last { border-top-color: var(--accent); }
 .step__no { font-family: var(--font-mono); font-size: var(--fs-caption); font-weight: var(--fw-bold); letter-spacing: 0.12em; color: var(--steel-500); }
@@ -250,7 +285,7 @@ h2.section-title {
 .faq details[open] summary .pm::after { content: "\2013"; }
 .faq p { margin: var(--space-3) 0 0; font-size: var(--fs-body-sm); line-height: 1.65; color: var(--text-body); max-width: 62ch; }
 
-.govern-band { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5) var(--space-7); align-items: center; }
+.govern-band { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr)); gap: var(--space-5) var(--space-7); align-items: center; }
 
 /* ---------------- Insights ---------------- */
 .article-card { display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-6); text-decoration: none; }
